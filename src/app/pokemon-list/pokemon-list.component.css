@@ -11,6 +11,9 @@
   background-position: center;
   background-size: 100%;
   text-align: center;
+  border-width: 1px;
+  border-style: solid;
+  border-color: red;
 }
 
 .pokemon img {
