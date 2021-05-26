@@ -1,0 +1,21 @@
+
+<div class="container px-4">
+  <span> Favorito: {{ pokemonFavorite }}</span>
+  <div class="row g-5">
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 pokemon"  *ngFor="let pokemon of pokemons | paginate: {itemsPerPage: 8, currentPage: page, totalItems: totalPokemons}">
+      <div class="pokeball">
+        <img [src]="pokemon.sprites.front_default" alt="Pokemon">
+        <div class="info row col-12">
+          <h5> {{ pokemon.name}} </h5>
+          <span class="col-3">Type:</span> <span class="col-3">{{ pokemon.types[0].type.name}}</span>
+          <span class="col-3"> Height:</span> <span class="col-3">{{ pokemon.height}}</span>
+          <span class="col-3">Health:</span> <span class="col-3">{{ pokemon.stats[0].base_stat}}</span>
+          <span class="col-3"> Atack:</span> <span class="col-3">{{ pokemon.stats[1].base_stat}}</span>
+        </div>
+        <a (click)="setFavorite(pokemon.name)">Favoritar</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<pagination-controls (pageChange)="page = $event; pokemons = []; getPokemons()"></pagination-controls>
